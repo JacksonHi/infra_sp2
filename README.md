@@ -109,13 +109,26 @@ docker-compose exec web python manage.py createsuperuser
 docker-compose exec web python manage.py collectstatic --no-input
 ```
 
-## Инстркция по пользованию API
+## Заполнить базу данных:
+
+```
+python3 manage.py shell
+
+>>> from django.contrib.contenttypes.models import ContentType
+>>> ContentType.objects.all().delete()
+>>> quit()
+
+python manage.py loaddata data.json
+```
+
+
+## Инстркция по пользованию API:
 
 ```
 http://localhost/redoc/
 ```
 
-## Админка
+## Админка:
 
 ```
 http://localhost/admin/
